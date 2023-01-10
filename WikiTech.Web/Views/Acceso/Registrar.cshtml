@@ -1,0 +1,40 @@
+﻿@model WikiTech.Entidades.Usuario
+
+@{
+}
+<div class="w-75 m-auto mt-5">
+    <div class="card text-center w-75 m-auto">
+        <div class="card-header">
+            <h1 class="display-6">Registrate en WikiTech</h1>
+        </div>
+        <div class="card-body mb-4 mt-4">
+            <form method="post" action="/Acceso/Registrar">
+                <div class="mb-4"> 
+                    <input type="text" name="email" asp-for="email" placeholder="Email" class="w-50 pt-1 pb-1 ps-2"/>
+                    <span asp-validation-for="email"></span>
+                </div>
+                <div class="mb-4">
+                    <input type="text" name="nombre" asp-for="nombre" placeholder="Nombre" class="w-50 pt-1 pb-1 ps-2" />
+                    <span asp-validation-for="nombre"></span>
+                </div>
+                <div class="mb-4">
+                    <input type="text" name="apellido" asp-for="apellido" placeholder="Apellido" class="w-50 pt-1 pb-1 ps-2" />
+                    <span asp-validation-for="apellido"></span>
+                </div>
+                <div class="mb-4 pb-3">
+                    <input type="password" name="contrasenia" asp-for="contrasenia" placeholder="Contraseña" class="w-50 pt-1 pb-1 ps-2" />
+                    <span asp-validation-for="contrasenia"></span>
+                </div>
+                <div>
+                    <input type="submit" value="Registrar" class="btn btn-primary w-50" role="button" />
+                </div>
+            </form>
+
+        </div>
+        <div class="card-footer text-muted pb-3 pt-3">
+            <a href="/Acceso/Login" style="text-decoration: none">Iniciar sesión</a>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,38 @@
+﻿@model WikiTech.Entidades.Usuario
+
+@{
+}
+<div class="w-75 m-auto mt-5">
+    <div class="card text-center w-75 m-auto">
+        <div class="card-header">
+            <h1 class="display-6">Ingresá a WikiTech</h1>
+        </div>
+        <div class="card-body mb-4 mt-4">
+            <form method="post" action="/Acceso/Login">
+                <div class="mb-4">
+                    <input type="text" name="email" asp-for="email" placeholder="Usuario" class="w-50 pt-1 pb-1 ps-2" />
+                    <span asp-validation-for="email"></span>
+                </div>
+                <div class="mb-4 pb-3">               
+                    <input type="password" name="contrasenia" asp-for="contrasenia" placeholder="Contraseña" class="w-50 pt-1 pb-1 ps-2" />
+                    <span asp-validation-for="contrasenia"></span>
+                </div>
+                <div>                 
+                    <input type="submit" value="Ingresar" class="btn btn-primary w-50" role="button" />
+                    @if(@ViewBag.mensaje != null){
+                    <div class="alert alert-danger" role="alert">
+                            @ViewBag.mensaje
+                    </div>
+                    
+                    }
+                </div>
+            </form>
+
+        </div>
+        <div class="card-footer text-muted pb-3 pt-3">
+            <a href="/Acceso/Registrar" style="text-decoration: none">Crear nueva cuenta</a>
+        </div>
+    </div>
+</div>
+
+

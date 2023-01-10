@@ -1,0 +1,47 @@
+﻿
+
+@{
+}
+
+<div class="text-center">
+    <h1 class="display-4 mb-3 mt-2">WikiTech</h1>
+    <div class="w-75 m-auto">
+        @if (ViewBag.usuario != null)
+        {
+            <h4 class="display-6 fs-4 mb-3">Bienvenido/a <span style="color:#6E85B7; font-weight:700">@ViewBag.usuario</span>  a la wiki  tecnológica!</h4>
+            }
+        <p>En WikiTech vas a poder crear tus propios artículos para compartir tus conocimientos con los demás colaboradores y usuarios</p>
+    </div>
+</div>
+
+@if (@TempData["creado"] != null)
+{
+    <div class="alert alert-success w-50 m-auto mb-3 text-center">@TempData["creado"]</div>
+}
+ 
+<div class="row row-cols-1 row-cols-md-4 g-4 mt-5" style="margin-left: 38px">
+    @foreach (var articulo in ViewBag.Articulos)
+    {
+        <a href="/Articulo/VerArticulo/@articulo.id" style="text-decoration:none; color: black">
+            <div class="col mb-3">
+                <div class="card" style="max-width: 88%; height:310px">
+                    <img src="@articulo.ImagenPrincipal" class="card-img-top" alt="..." style="height: 42%">
+                    <div class="card-body">
+                        <p hidden>@articulo.id</p>
+                        <h5 class="card-title" style="white-space:nowrap;text-overflow: ellipsis;white-space: wrap;overflow: hidden;">@articulo.Titulo</h5>
+                        <p class="card-text" style="white-space:nowrap;text-overflow: ellipsis;white-space: wrap;overflow: hidden;">@articulo.Contenido</p>
+                        <p>Puntuación: @articulo.Puntaje</p>
+                        <p>@articulo.Fecha</p>
+                        @if(ViewBag.Eliminar){
+                            @*<a href="/articulo/EliminarArticulo/@articulo.id" style="text-decoration:none;">Eliminar</a>*@
+                        }
+                       
+                    </div>
+                </div>
+            </div>
+        </a>
+    }
+</div>
+    
+
+

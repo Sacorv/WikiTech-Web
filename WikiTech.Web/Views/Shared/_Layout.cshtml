@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WikiTech.Web</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/WikiTech.Web.styles.css" asp-append-version="true" />
+</head>
+<body style="background-color:#F9F9F9">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Articulo" asp-action="ListarArticulos">WikiTech.Web</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Articulo" asp-action="ListarArticulos">Articulos</a>
+                        </li>
+                        @if (ViewBag.Token != null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Articulo" asp-action="CrearArticulo">Nuevo Artículo</a>
+                            </li>
+                        }
+                        @if (ViewBag.Token == null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Acceso" asp-action="Registrar">Registrarse</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Acceso" asp-action="Login">Login</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+                @if (ViewBag.Token != null)
+                {
+                    <div class="navbar-nav d-flex">
+                        <div class="nav-item pt-2">
+                            Bienvenido/a @ViewBag.usuario
+                        </div>
+                        <div class="nav-item">
+                            <button type="button" class="btn btn-link text-decoration-none">
+                                <a href="/Acceso/CerrarSesion" class="text-decoration-none">Cerrar sesión</a>
+                            </button>
+                        </div>
+                        </div>
+                }
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - WikiTech.Web
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,25 @@
+﻿@model WikiTech.Entidades.Articulo
+
+@{
+}
+
+<h1 class="display-4 fs-2 text-center mt-5 pb-2">@Model.Titulo</h1>
+
+<div class="card mb-3 mt-4 text-center m-auto h-50" style="max-width: 75%;">
+    <img src="@Model.ImagenPrincipal" class="card-img-top" alt="..." style="height:300px; max-width: 100%;">
+    <div class="card-body">
+        <h5 class="card-title mb-4 mt-4">@Model.Titulo</h5>
+        <p class="card-text mb-4">@Model.Contenido</p>
+        <a href="#" style="text-decoration:none" class="mb-4">Ver video</a>
+        <p class="card-text text-start"><small class="text-muted text-start">@Model.Fecha</small></p>
+        @if (ViewBag.Eliminar)
+        {
+            <div class="text-end">
+            <a href="/articulo/EliminarArticulo/@Model.id">Eliminar</a>
+        </div>
+        }
+    </div>
+</div>
+<div class="m-auto text-center">
+    <a class="btn btn-primary btn-lg" style="width:180px; margin-top: 10px;" href="/articulo/ListarArticulos" role="button">Volver</a>
+</div>
